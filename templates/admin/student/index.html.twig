@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+{% block title %}Admininstration des etudiants
+{% endblock %}
+{% block body %}
+	<div class="container-fluid mt-4">
+		{% include "admin/partials/_message.html.twig" %}
+		<h2 class="text-center">Admininstration des etudiants
+			<a href="{{ path('admin_student_new') }}" class="btn btn-success">
+				<i class="fa fa-plus">
+					Ajouter</i>
+			</a>
+		</h2>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="text-center">
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Age</th>
+					<th>Sexe</th>
+					<th>Telephone</th>
+					<th>Email</th>
+					<th>Adresse</th>
+					<th>Filiere</th>
+					<th>Classe</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for student in pagination.data %}
+					<tr class="text-center">
+						<td>{{student.id}}</td>
+						<td>{{student.firstName}}</td>
+						<td>{{student.lastName}}</td>
+						<td>{{student.age}}
+							ans</td>
+						<td>{{student.sex}}</td>
+						<td>{{student.phoneNumber}}</td>
+						<td>{{student.email}}</td>
+						<td>{{student.address}}</td>
+						<td>{{student.branch.name}}</td>
+						<td>{{student.degree.name}}</td>
+						<td>
+							<a href="{{ path('admin_student_edit', {id: student.id}) }}" class="btn btn-primary">
+								<i class="fa fa-edit">
+									Editer</i>
+							</a>
+							<a href="{{ path('admin_student_delete', {id: student.id}) }}" class="btn btn-danger">
+								<i class="fa fa-trash">
+									Supprimer</i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{{ pagination.display() }}
+	</div>
+{% endblock %}

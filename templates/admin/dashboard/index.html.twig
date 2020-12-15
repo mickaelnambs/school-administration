@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de board
+{% endblock %}
+
+{% block body %}
+	<div class="container p-3">
+		<div class="row jumbotron">
+			<div class="col-6">
+				<div class="card bg-dark text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-5">
+								<i class="fa fa-graduation-cap fa-3x"></i>
+
+							</div>
+							<div class="col-7">
+								<a href="{{ path('admin_student_index') }}" class="text-white">
+									<h4 class="card-title">
+										{{stats.students}}
+										etudiants</h4>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="card bg-success text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-5">
+								<i class="fa fa-users fa-3x"></i>
+							</div>
+							<div class="col-7">
+								<a href="{{ path('admin_professor_index') }}" class="text-white">
+									<h4 class="card-title">
+										{{stats.professors}}
+										professeurs</h4>
+								</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-4">
+				<div class="card bg-danger text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-5">
+								<i class="fa fa-book fa-3x"></i>
+							</div>
+							<div class="col-7">
+								<a href="{{ path('admin_matter_index') }}" class="text-white">
+									<h4 class="card-title">
+										{{stats.matters}}
+										matieres</h4>
+
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card bg-warning text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-5">
+								<i class="fa fa-comment fa-3x"></i>
+							</div>
+							<div class="col-7">
+								<a href="{{ path('admin_branch_index') }}" class="text-white">
+									<h4 class="card-title">
+										{{stats.branchs}}
+										filieres</h4>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card bg-info text-white mb-3 text-center">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-5">
+								<i class="fa fa-university fa-3x"></i>
+							</div>
+							<div class="col-7">
+								<a href="{{ path('admin_degree_index') }}" class="text-white">
+									<h4 class="card-title">{{stats.degrees}}
+										classes</h4>
+
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

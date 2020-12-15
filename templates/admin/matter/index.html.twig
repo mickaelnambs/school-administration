@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block title %}Gestion des matieres
+{% endblock %}
+{% block body %}
+	<div class="container mt-4">
+		{% include "admin/partials/_message.html.twig" %}
+		<h2 class="text-center">Gestion des matieres
+			<a href="{{ path('admin_matter_new') }}" class="btn btn-success">
+				<i class="fa fa-plus">
+					Ajouter</i>
+			</a>
+		</h2>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="text-center">
+					<th>ID</th>
+					<th>Nom de la matiere</th>
+					<th>Coefficient</th>
+					<th>Date</th>
+					<th>Classe</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for matter in pagination.data %}
+					<tr class="text-center">
+						<td>{{matter.id}}</td>
+						<td>{{matter.name}}</td>
+						<td>{{matter.coefficient}}</td>
+						<td>{{matter.createdAt | date('d/m/Y à H:i')}}</td>
+						<td>{{matter.degree.name }}</td>
+						<td>
+							<a href="{{ path('admin_matter_edit', {id: matter.id}) }}" class="btn btn-primary">
+								<i class="fa fa-edit">
+									Editer</i>
+							</a>
+							<a href="{{ path('admin_matter_delete', {id: matter.id}) }}" class="btn btn-danger">
+								<i class="fa fa-trash">
+									Supprimer</i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{{ pagination.display() }}
+	</div>
+{% endblock %}

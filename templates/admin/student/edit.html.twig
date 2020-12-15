@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		{{ form_start(form) }}
+		<div class="row">
+			<div class="col">
+				<div class="alert alert-light">
+					<h2 class="alert-heading">Informations générales</h2>
+					<hr>
+					{{ form_row(form.firstName) }}
+					{{ form_row(form.lastName) }}
+					{{ form_row(form.age) }}
+					{{ form_row(form.sex) }}
+					{{ form_row(form.dateOfBirth) }}
+					{{ form_row(form.address) }}
+
+				</div>
+			</div>
+			<div class="col">
+				<div class="alert alert-light">
+					<h2 class="alert-heading">Détails</h2>
+					<hr>
+					{{ form_row(form.phoneNumber) }}
+					{{ form_row(form.email) }}
+					{{ form_row(form.image) }}
+					{{ form_row(form.branch) }}
+					{{ form_row(form.degree) }}
+
+					<hr>
+					<button type="submit" class="btn btn-success">
+						<i class="fa fa-save"></i>
+						Confirmez la modification
+					</button>
+				</div>
+			</div>
+		</div>
+		{{ form_end(form) }}
+
+	</div>
+
+{% endblock %}

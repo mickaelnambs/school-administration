@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block title %}Admininstration des Professeurs
+{% endblock %}
+{% block body %}
+	<div class="container-fluid mt-4 text-center">
+		{% include "admin/partials/_message.html.twig" %}
+		<h2 class="text-center">Admininstration des Professeurs
+			<a href="{{ path('admin_professor_new') }}" class="btn btn-success">
+				<i class="fa fa-plus">
+					Ajouter</i>
+			</a>
+		</h2>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="text-center">
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Age</th>
+					<th>Sexe</th>
+					<th>Telephone</th>
+					<th>Email</th>
+					<th>Adresse</th>
+					<th>Salaire</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for professor in pagination.data %}
+					<tr class="text-center">
+						<td>{{professor.id}}</td>
+						<td>{{professor.firstName}}</td>
+						<td>{{professor.lastName}}</td>
+						<td>{{professor.age}}
+							ans</td>
+						<td>{{professor.sex}}</td>
+						<td>{{professor.phoneNumber}}</td>
+						<td>{{professor.email}}</td>
+						<td>{{professor.address}}</td>
+						<td>{{professor.salary}}
+							Ar/heure</td>
+						<td>
+							<a href="{{ path('admin_professor_edit', {id: professor.id}) }}" class="btn btn-primary">
+								<i class="fa fa-edit">
+									Editer</i>
+							</a>
+							<a href="{{ path('admin_professor_delete', {id: professor.id}) }}" class="btn btn-danger">
+								<i class="fa fa-trash">
+									Supprimer</i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{{ pagination.display() }}
+	</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block title %}Gestion des classes
+{% endblock %}
+{% block body %}
+	<div class="container mt-4 mb-4">
+		{% include "admin/partials/_message.html.twig" %}
+		<h2 class="text-center">Gestion des classes
+			<a href="{{ path('admin_degree_new') }}" class="btn btn-success">
+				<i class="fa fa-plus">
+					Ajouter</i>
+			</a>
+		</h2>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="text-center">
+					<th>ID</th>
+					<th>Nom de la classe</th>
+					<th>Etudiants</th>
+					<th>Date</th>
+					<th>Filiere concernee</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for degree in pagination.data %}
+					<tr class="text-center">
+						<td>{{degree.id}}</td>
+						<td>{{degree.name}}</td>
+						<td>{{degree.students | length }}</td>
+						<td>{{degree.createdAt | date('d/m/Y à H:i')}}</td>
+						<td>{{degree.branch.name}}</td>
+						<td>
+							<a href="{{ path('admin_degree_edit', {id: degree.id}) }}" class="btn btn-primary">
+								<i class="fa fa-edit">
+									Editer</i>
+							</a>
+							<a href="{{ path('admin_degree_delete', {id: degree.id}) }}" class="btn btn-danger">
+								<i class="fa fa-trash">
+									Supprimer</i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{{ pagination.display() }}
+	</div>
+{% endblock %}

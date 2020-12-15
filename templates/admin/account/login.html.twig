@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Login !</title>
+		<link rel="stylesheet" href="{{ asset('fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/vendor/style.css') }}">
+	</head>
+	<body>
+		<div class="main">
+			<section class="sign-in">
+				<div class="container">
+					<div class="signin-content">
+						<div class="signin-image">
+							<figure><img src="{{ asset('images/signup-image.jpg') }}" alt="sing up image"></figure>
+						</div>
+						<div class="signin-form">
+							<h2 class="form-title">Connexion !</h2>
+							{% if hasError %}
+								<div class="alert alert-danger">
+									<p class="text-white">Les informations que vous avez fournies ne sont pas bonnes.</p>
+								</div>
+							{% endif %}
+							<form method="POST" class="register-form" id="login-form">
+								<div class="form-group">
+									<label for="_username">
+										<i class="zmdi zmdi-account material-icons-name"></i>
+									</label>
+									<input type="text" name="_username" id="your_name" placeholder="Votre adresse email"/>
+								</div>
+								<div class="form-group">
+									<label for="_password">
+										<i class="zmdi zmdi-lock"></i>
+									</label>
+									<input type="password" name="_password" id="your_pass" placeholder="Votre mot de passe"/>
+								</div>
+								<div class="form-group form-button">
+									<input type="submit" name="signin" id="signin" class="form-submit" value="Connexion"/>
+								</div>
+							</form>
+							<div class="social-login">
+								<span class="social-label">Suivez-nous sur</span>
+								<ul class="socials">
+									<li>
+										<a href="#">
+											<i class="display-flex-center zmdi zmdi-facebook"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="display-flex-center zmdi zmdi-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="display-flex-center zmdi zmdi-google"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+	</body>
+</html>
